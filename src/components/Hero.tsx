@@ -18,7 +18,7 @@ const NEOFETCH = `
 
 export default function Hero() {
   return (
-    <section className="min-h-[90vh] flex flex-col justify-center relative">
+    <section className="min-h-[90vh] flex flex-col justify-center relative pt-20 sm:pt-24">
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
 
         {/* Left: Intro */}

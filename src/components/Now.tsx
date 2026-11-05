@@ -6,7 +6,7 @@ const CURSOR = `
 
 export default function Now() {
   return (
-    <section className="min-h-screen flex flex-col justify-center relative">
+    <section id="now" className="min-h-screen flex flex-col justify-center relative pt-16">
       <div className="absolute top-10 right-0 w-full text-right opacity-[0.06] pointer-events-none">
         <span className="text-6xl sm:text-8xl md:text-9xl font-bold tracking-widest text-[var(--accent)]">NOW</span>
       </div>

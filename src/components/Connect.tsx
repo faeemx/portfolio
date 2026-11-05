@@ -9,7 +9,7 @@ const LINKS = [
 
 export default function Connect() {
   return (
-    <section className="min-h-[70vh] flex flex-col justify-center relative items-center text-center">
+    <section id="connect" className="min-h-[70vh] flex flex-col justify-center relative items-center text-center pt-16">
       <div className="absolute top-10 w-full text-center opacity-[0.06] pointer-events-none">
         <span className="text-6xl sm:text-8xl md:text-9xl font-bold tracking-widest text-[var(--text-primary)]">CONNECT</span>
       </div>
