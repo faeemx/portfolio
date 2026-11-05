@@ -17,11 +17,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Mando — Developer & Hardware Hacker",
+    default: "Mando | ~/dev",
     template: "%s | Mando",
   },
   description:
-    "Portfolio of Mando. Python developer, IoT builder, and full-stack engineer. Minimal terminal-style portfolio with a living ASCII background and real-time Discord presence.",
+    "18-year-old developer building real-time TUIs, ESP32 hardware, and web experiments with live Discord presence.",
   keywords: [
     "Mando",
     "faeemaxn",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     apple: "/icon.svg",
   },
   openGraph: {
-    title: "Mando — Developer & Hardware Hacker",
+    title: "Mando | ~/dev",
     description:
-      "Python developer, IoT builder, and full-stack engineer. Minimal terminal-style portfolio with a living ASCII background and real-time Discord presence.",
+      "18-year-old developer building real-time TUIs, ESP32 hardware, and web experiments with live Discord presence.",
     url: siteUrl,
     siteName: "Mando Portfolio",
     locale: "en_US",
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mando — Developer & Hardware Hacker",
+    title: "Mando | ~/dev",
     description:
-      "Python developer, IoT builder, and full-stack engineer. Minimal terminal-style portfolio with a living ASCII background.",
+      "18-year-old developer building real-time TUIs, ESP32 hardware, and web experiments with live Discord presence.",
     creator: "@faeemaxn",
   },
 };

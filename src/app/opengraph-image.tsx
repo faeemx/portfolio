@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'nodejs';
-export const alt = 'Mando — Developer & Hardware Hacker';
+export const alt = 'Mando | ~/dev';
 export const size = {
   width: 1200,
   height: 630,
@@ -99,7 +99,7 @@ export default async function Image() {
                 margin: '0 0 32px 0',
               }}
             >
-              Python, Next.js, and ESP32 developer. Crafting terminal TUIs, physical computing sensors, and minimal web apps.
+              18-year-old developer building real-time TUIs, ESP32 hardware, and web experiments with live Discord presence.
             </p>
 
             {/* Badges */}
