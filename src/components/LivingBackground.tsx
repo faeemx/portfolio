@@ -137,7 +137,7 @@ export default function LivingBackground() {
   const colors = getColors();
 
   return (
-    <div className={`fixed inset-0 overflow-hidden pointer-events-none z-0 transition-opacity duration-1000 ${isStorm || isThunderstorm ? 'opacity-60' : 'opacity-40'}`}>
+    <div className={`fixed inset-0 overflow-hidden pointer-events-none z-0 transition-opacity duration-1000 ${isStorm || isThunderstorm ? 'opacity-35' : 'opacity-20'}`}>
       
       {/* Dusty Red Dead Environment Overlay during storm */}
       <div 

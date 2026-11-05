@@ -21,8 +21,8 @@ export default function Header() {
           className="font-mono text-sm font-bold text-white hover:text-[var(--accent)] transition-colors flex items-center gap-1.5 shrink-0"
         >
           <span className="text-[var(--accent)]">λ</span>
-          <span>faeem</span>
-          <span className="text-[var(--text-dim)] hidden sm:inline">@portfolio:~$</span>
+          <span>mando</span>
+          <span className="text-[var(--text-dim)] hidden sm:inline">:~$</span>
         </a>
 
         {/* Center Nav Links */}

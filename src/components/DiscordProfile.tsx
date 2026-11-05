@@ -65,7 +65,7 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
     activityBrief = statusLabel;
   }
 
-  const username = user?.global_name || user?.username || 'faeem';
+  const username = user?.global_name || user?.display_name || user?.username || 'Mando';
 
   return (
     <div className="relative">
@@ -133,7 +133,7 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
             </div>
             <div className="min-w-0 flex-1">
               <p className="font-bold text-sm text-white truncate">{username}</p>
-              <p className="text-[11px] text-[var(--text-dim)] truncate">@{user?.username || 'faeem'}</p>
+              <p className="text-[11px] text-[var(--text-dim)] truncate">@{user?.username || 'faeemaxn'}</p>
               <div className="flex items-center gap-1.5 mt-1">
                 <span className="w-2 h-2 rounded-full" style={{ backgroundColor: statusColor }} />
                 <span className="text-[10px] uppercase tracking-wider" style={{ color: statusColor }}>

@@ -22,7 +22,7 @@ export default function About() {
           </h2>
           <div className="text-[var(--text-primary)] space-y-5 max-w-xl text-base leading-relaxed">
             <p>
-              I&apos;m Faeem — an 18-year-old developer who builds terminal apps,
+              I&apos;m Mando — an 18-year-old developer who builds terminal apps,
               wires up IoT sensors, and deploys things to the internet.
             </p>
             <p>

@@ -2,70 +2,59 @@
 
 import AsciiText from './AsciiText';
 
-const NEOFETCH = `
-  ┌──────────────────────────┐
-  │  faeem@dev ~ $ neofetch  │
-  └──────────────────────────┘
-   ╭───────────────────────────╮
-   │  OS      Web + Hardware   │
-   │  Shell   Python 3.12      │
-   │  Editor  VS Code          │
-   │  HW      ESP32 + Sensors  │
-   │  Uptime  18 years         │
-   │  Status  Building...      │
-   ╰───────────────────────────╯
-`;
-
 export default function Hero() {
   return (
-    <section className="min-h-[90vh] flex flex-col justify-center relative pt-20 sm:pt-24">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+    <section className="min-h-[85vh] flex flex-col justify-center relative pt-20">
+      <div className="max-w-3xl space-y-7 z-10">
 
-        {/* Left: Intro */}
-        <div className="flex-1 space-y-8 z-10">
-          <div>
-            <p className="text-sm text-[var(--text-dim)] tracking-[0.3em] uppercase mb-4 font-mono">
-              <AsciiText text="faeem@portfolio:~$" delay={100} />
-            </p>
-            <h1 className="text-5xl md:text-7xl font-bold mb-2 text-white">
-              <AsciiText text="Faeem" delay={300} />
-              <br />
-              <span className="text-[var(--accent)]">
-                <AsciiText text="Ahmed" delay={600} />
-              </span>
-            </h1>
-            <p className="text-lg md:text-xl text-[var(--text-primary)] max-w-lg mt-6 leading-relaxed">
-              <AsciiText
-                text="Developer. Hardware Hacker. Builder. I write Python, solder ESP32s, and ship things that work."
-                delay={1000}
-              />
-            </p>
+        {/* Minimal Terminal Tag */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 border border-white/10 text-xs font-mono text-[var(--accent)] backdrop-blur-md">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
+          <AsciiText text="mando@dev:~$" delay={100} />
+        </div>
+
+        {/* Main Name & Title */}
+        <div>
+          <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white mb-2">
+            <AsciiText text="Mando" delay={300} />
+          </h1>
+          <p className="text-lg sm:text-2xl text-[var(--accent)] font-mono font-medium">
+            <AsciiText text="Developer · Hardware Hacker · Builder" delay={600} />
+          </p>
+        </div>
+
+        {/* Clean concise bio */}
+        <p className="text-base sm:text-lg text-[var(--text-primary)] max-w-xl leading-relaxed">
+          <AsciiText
+            text="I write Python, build with ESP32s, and craft minimal terminal applications. Focused on TUIs, IoT hardware, and building things that work."
+            delay={900}
+          />
+        </p>
+
+        {/* Single Simplified System Readout */}
+        <div className="bg-black/60 border border-white/10 rounded-xl p-5 font-mono text-xs backdrop-blur-md max-w-lg space-y-3">
+          <div className="flex items-center justify-between border-b border-white/10 pb-2.5 text-[var(--text-dim)]">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+              <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+              <span className="ml-2 text-white/70">system.status</span>
+            </div>
+            <span className="text-[var(--accent)]">ready [OK]</span>
           </div>
 
-          {/* Terminal Block */}
-          <div className="bg-black/60 border border-[var(--text-dim)] rounded-lg p-5 font-mono text-sm backdrop-blur-md max-w-md">
-            <div className="flex gap-2 mb-3 border-b border-[var(--text-dim)] pb-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-              <span className="ml-2 text-xs text-[var(--text-dim)]">~/portfolio</span>
-            </div>
-            <div className="space-y-2 text-[var(--text-dim)]">
-              <p><AsciiText text="$ python --version → 3.12" delay={1600} as="span" /></p>
-              <p><AsciiText text="$ node --version → 22.x" delay={2000} as="span" /></p>
-              <p><AsciiText text="$ cat /proc/uptime → 18 years" delay={2400} as="span" /></p>
-              <p className="text-[var(--accent)] animate-pulse">
-                <AsciiText text="$ ready. scroll to explore ▾" delay={2800} as="span" />
-              </p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[var(--text-dim)]">
+            <p><span className="text-white">stack:</span> Python, Next.js, ESP32</p>
+            <p><span className="text-white">focus:</span> TUIs &amp; IoT sensors</p>
+            <p><span className="text-white">uptime:</span> 18 years</p>
+            <p><span className="text-white">status:</span> building full-time</p>
           </div>
         </div>
 
-        {/* Right: Neofetch ASCII */}
-        <div className="hidden md:flex flex-1 justify-end opacity-90 hover:opacity-100 transition-opacity duration-700">
-          <pre className="ascii-art text-[var(--accent)] font-bold text-sm lg:text-base leading-snug transition-all duration-700">
-            {NEOFETCH}
-          </pre>
+        {/* Scroll hint */}
+        <div className="pt-2 flex items-center gap-2 text-xs font-mono text-[var(--text-dim)]">
+          <span className="text-[var(--accent)] animate-bounce">↓</span>
+          <span>scroll to explore</span>
         </div>
 
       </div>
