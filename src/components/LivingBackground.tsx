@@ -124,7 +124,6 @@ export default function LivingBackground() {
   const isThunderstorm = weather === 'THUNDERSTORM';
   const isSnow = weather === 'SNOW';
   const isSunny = weather === 'SUNNY';
-  const isClear = weather === 'CLEAR';
 
   const getColors = () => {
     if (isStorm) return STORM_COLORS;

@@ -1,13 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Allow Ngrok port forwarding to access Next.js dev server resources
-  allowedDevOrigins: ["a122-106-215-162-246.ngrok-free.app"],
-
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.discordapp.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.scdn.co",
+      },
+    ],
+  },
   async headers() {
     return [
       {
-        // Allow CORS for all routes so ngrok works seamlessly
         source: "/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },

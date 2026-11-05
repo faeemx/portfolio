@@ -53,7 +53,7 @@ export default function Connect() {
         </div>
 
         <p className="mt-16 text-xs text-[var(--text-dim)] uppercase tracking-[0.2em]">
-          // EOF — thanks for reading.
+          {"// EOF — thanks for reading."}
         </p>
       </div>
     </section>
