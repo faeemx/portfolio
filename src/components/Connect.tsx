@@ -1,10 +1,10 @@
 import AsciiText from './AsciiText';
 
 const LINKS = [
-  { key: 'github', value: 'github.com/faeemaxp', href: 'https://github.com/faeemaxp', color: 'var(--accent)' },
+  { key: 'github', value: 'github.com/faeemx', href: 'https://github.com/faeemx', color: 'var(--accent)' },
   { key: 'email', value: 'faeem@example.com', href: 'mailto:faeem@example.com', color: 'var(--cyan)' },
   { key: 'letterboxd', value: 'letterboxd.com/faeem', href: 'https://letterboxd.com/faeem/', color: 'var(--orange)' },
-  { key: 'discord', value: 'faeem', href: '#', color: 'var(--purple)' },
+  { key: 'discord', value: 'faeemaxn (Mando)', href: 'https://discord.com/users/1409447267290714222', color: 'var(--purple)' },
 ];
 
 export default function Connect() {

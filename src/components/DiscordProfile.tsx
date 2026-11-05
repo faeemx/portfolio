@@ -183,7 +183,7 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
           <div className="pt-2.5 flex items-center justify-between text-[11px]">
             <span className="text-[var(--text-dim)]">Lanyard Realtime</span>
             <a
-              href="https://discord.com/users/faeem"
+              href={`https://discord.com/users/${userId || '1409447267290714222'}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[var(--accent)] hover:underline flex items-center gap-1"
