@@ -5,7 +5,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
   ? process.env.NEXT_PUBLIC_SITE_URL
   : process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : "https://portfolio-faeemx.vercel.app";
+  : "https://faeem.space";
 
 export const viewport: Viewport = {
   themeColor: "#0d0d0d",
@@ -17,11 +17,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Mando | ~/dev",
+    default: "Mando | ~/dev — Python, TUIs & ESP32 Hardware",
     template: "%s | Mando",
   },
   description:
-    "18-year-old developer building real-time TUIs, ESP32 hardware, and web experiments with live Discord presence.",
+    "18-year-old developer building real-time Python TUIs, ESP32 IoT hardware, and full-stack web systems with live Discord presence.",
   keywords: [
     "Mando",
     "faeemaxn",
@@ -32,9 +32,10 @@ export const metadata: Metadata = {
     "IoT",
     "hardware",
     "Textual",
-    "ASCII art",
+    "FastAPI",
+    "Scrapy",
     "Next.js",
-    "creative coding",
+    "TUI",
   ],
   authors: [{ name: "Mando", url: "https://github.com/faeemx" }],
   creator: "Mando",
@@ -47,9 +48,9 @@ export const metadata: Metadata = {
     apple: "/icon.svg",
   },
   openGraph: {
-    title: "Mando | ~/dev",
+    title: "Mando | ~/dev — Python, TUIs & ESP32 Hardware",
     description:
-      "18-year-old developer building real-time TUIs, ESP32 hardware, and web experiments with live Discord presence.",
+      "18-year-old developer building real-time Python TUIs, ESP32 IoT hardware, and full-stack web systems with live Discord presence.",
     url: siteUrl,
     siteName: "Mando Portfolio",
     locale: "en_US",
@@ -57,9 +58,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mando | ~/dev",
+    title: "Mando | ~/dev — Python, TUIs & ESP32 Hardware",
     description:
-      "18-year-old developer building real-time TUIs, ESP32 hardware, and web experiments with live Discord presence.",
+      "18-year-old developer building real-time Python TUIs, ESP32 IoT hardware, and full-stack web systems with live Discord presence.",
     creator: "@faeemaxn",
   },
 };

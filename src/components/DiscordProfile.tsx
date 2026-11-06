@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanyard } from '@/lib/use-lanyard';
 import { DEFAULT_DISCORD_USER_ID } from '@/lib/discord-config';
 
@@ -8,19 +8,61 @@ interface DiscordProfileProps {
   userId?: string;
 }
 
-export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: DiscordProfileProps) {
-  const { data } = useLanyard(userId);
-  const [showDetails, setShowDetails] = useState(false);
+function DiscordProfileSkeleton() {
+  return (
+    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-black/60 border border-white/10 text-left">
+      <div className="w-6 h-6 rounded-full bg-white/10 skeleton-shimmer shrink-0" />
+      <div className="flex flex-col gap-1 w-20 sm:w-28">
+        <div className="w-14 sm:w-16 h-2.5 rounded bg-white/10 skeleton-shimmer" />
+        <div className="w-16 sm:w-20 h-2 rounded bg-white/10 skeleton-shimmer" />
+      </div>
+    </div>
+  );
+}
 
-  // If no user ID configured, show sleek placeholder/mock profile
-  const user = data?.discord_user;
-  const status = data?.discord_status || 'offline';
+export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: DiscordProfileProps) {
+  const { data, loading } = useLanyard(userId);
+  const [showDetails, setShowDetails] = useState(false);
+  const popoverRef = useRef<HTMLDivElement>(null);
+
+  // Close popover when clicking outside or pressing Escape
+  useEffect(() => {
+    if (!showDetails) return;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (popoverRef.current && !popoverRef.current.contains(e.target as Node)) {
+        setShowDetails(false);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowDetails(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [showDetails]);
+
+  // Loading skeleton while data loads
+  if (loading || !data) {
+    return <DiscordProfileSkeleton />;
+  }
+
+  const user = data.discord_user;
+  const status = data.discord_status || 'offline';
   const isOnline = status !== 'offline';
 
   // Find priority activity: Spotify first, then custom/game/VSCode
-  const spotify = data?.listening_to_spotify ? data.spotify : null;
-  const nonCustomActivities = data?.activities?.filter((a) => a.type !== 4) || [];
-  const customStatus = data?.activities?.find((a) => a.type === 4);
+  const spotify = data.listening_to_spotify ? data.spotify : null;
+  const nonCustomActivities = data.activities?.filter((a) => a.type !== 4) || [];
+  const customStatus = data.activities?.find((a) => a.type === 4);
   const primaryActivity = nonCustomActivities[0];
 
   // Determine avatar URL
@@ -68,13 +110,14 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
   const username = user?.global_name || user?.display_name || user?.username || 'Mando';
 
   return (
-    <div className="relative">
+    <div ref={popoverRef} className="relative">
       <button
         onClick={() => setShowDetails(!showDetails)}
         onMouseEnter={() => setShowDetails(true)}
         onMouseLeave={() => setShowDetails(false)}
         className="flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-black/60 border border-[var(--text-dim)] hover:border-[var(--accent)] backdrop-blur-md transition-all duration-300 group cursor-pointer text-left"
         aria-label="Discord Status"
+        aria-expanded={showDetails}
       >
         {/* Avatar with Status Dot */}
         <div className="relative w-6 h-6 shrink-0">
@@ -111,7 +154,7 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
         </div>
       </button>
 
-      {/* Popover / Expanded Activity Modal on Hover */}
+      {/* Popover / Expanded Activity Modal on Hover/Click */}
       {showDetails && (
         <div
           onMouseEnter={() => setShowDetails(true)}

@@ -2,8 +2,9 @@ import AsciiText from './AsciiText';
 
 const LINKS = [
   { key: 'github', value: 'github.com/faeemx', href: 'https://github.com/faeemx', color: 'var(--accent)' },
-  { key: 'email', value: 'faeem@example.com', href: 'mailto:faeem@example.com', color: 'var(--cyan)' },
-  { key: 'letterboxd', value: 'letterboxd.com/faeem', href: 'https://letterboxd.com/faeem/', color: 'var(--orange)' },
+  { key: 'twitter', value: 'x.com/faeemaxn', href: 'https://x.com/faeemaxn', color: 'var(--cyan)' },
+  { key: 'email', value: 'faeemansariao@gmail.com', href: 'mailto:faeemansariao@gmail.com', color: 'var(--orange)' },
+  { key: 'letterboxd', value: 'letterboxd.com/faeem', href: 'https://letterboxd.com/faeem/', color: 'var(--pink)' },
   { key: 'discord', value: 'faeemaxn (Mando)', href: 'https://discord.com/users/1409447267290714222', color: 'var(--purple)' },
 ];
 
@@ -56,7 +57,7 @@ export default function Connect() {
         </div>
 
         <p className="text-xs text-[var(--text-dim)] mt-8 font-mono">
-          open to collaborations, hardware discussions &amp; interesting projects
+          open to Python/IoT collaborations, freelance builds &amp; hardware discussions
         </p>
       </div>
     </section>

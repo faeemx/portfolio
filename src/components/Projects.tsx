@@ -15,9 +15,9 @@ const PROJECTS: Project[] = [
   {
     file: 'katto.md',
     title: '💬 Katto',
-    tagline: 'Real-time terminal chat',
+    tagline: 'Real-time terminal chat client',
     description:
-      'A TUI-based social chat application built with Python and Textual. Multiple channels, message history, live presence indicators. Chat without leaving your terminal.',
+      'Low-latency TUI social chat app. Multi-channel rooms, persistent history, and live user presence.',
     tech: ['Python', 'Textual', 'WebSockets', 'AsyncIO'],
     ascii: `  .=========.
   | [=====] |
@@ -26,15 +26,15 @@ const PROJECTS: Project[] = [
   |_________|`,
     accentColor: 'var(--accent)',
     links: [
-      { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
+      { label: 'GitHub ↗', href: 'https://github.com/faeemx/katto' },
     ],
   },
   {
     file: 'iot-radio.md',
     title: '📻 Internet Radio',
-    tagline: 'ESP32 streaming device',
+    tagline: 'Standalone ESP32 audio streamer',
     description:
-      'Streams 50+ radio stations on a 1.8" TFT display. Rotary encoder for station switching. Real-time metadata display. Runs 24/7 on my desk.',
+      'Custom hardware radio streaming 50+ stations via a VS1053 codec, 1.8" TFT UI, and rotary encoder.',
     tech: ['ESP32', 'MicroPython', 'TFT', 'I2C', 'VS1053'],
     ascii: `    .───.
    | ))) |
@@ -42,15 +42,15 @@ const PROJECTS: Project[] = [
    /     \\`,
     accentColor: 'var(--cyan)',
     links: [
-      { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
+      { label: 'GitHub ↗', href: 'https://github.com/faeemx/iot-radio' },
     ],
   },
   {
     file: 'weather-station.md',
     title: '🌡️ Weather Station',
-    tagline: 'Multi-sensor environmental monitor',
+    tagline: 'End-to-end IoT environmental telemetry',
     description:
-      'Reads temperature, humidity, pressure from DHT11 and BMP280 sensors. Pushes data every 60s to a Next.js dashboard via Supabase. Real-time live chart.',
+      'Multi-sensor node sampling temp, humidity, and pressure, streaming live to a Next.js/Supabase cloud.',
     tech: ['ESP32', 'DHT11', 'BMP280', 'Next.js', 'Supabase'],
     ascii: `    _  _
    ( \`   )_
@@ -59,15 +59,15 @@ const PROJECTS: Project[] = [
    ' ' ' '`,
     accentColor: 'var(--orange)',
     links: [
-      { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
+      { label: 'GitHub ↗', href: 'https://github.com/faeemx/weather-station' },
     ],
   },
   {
     file: 'mediaradar.md',
     title: '📡 Mediaradar',
-    tagline: 'Automated intelligence scraper',
+    tagline: 'Headless media intelligence pipeline',
     description:
-      'Scrapes media intelligence data, cleans with pandas, and dumps to PostgreSQL. Scheduled cron jobs running headless. Built for real production workloads.',
+      'Automated scraping and normalization pipeline running on headless cron jobs to index media intelligence.',
     tech: ['Python', 'Scrapy', 'PostgreSQL', 'Docker', 'pandas'],
     ascii: `    /|
    / |___
@@ -76,7 +76,7 @@ const PROJECTS: Project[] = [
     /|`,
     accentColor: 'var(--purple)',
     links: [
-      { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
+      { label: 'GitHub ↗', href: 'https://github.com/faeemx/mediaradar' },
     ],
   },
 ];
@@ -160,7 +160,7 @@ export default function Projects() {
 
       <div className="relative z-10">
         <h2 className="text-3xl font-bold mb-4 text-[var(--accent)]">
-          <AsciiText text="[03] ls ~/projects" delay={0} />
+          <AsciiText text="[03] ls -la ./projects/" delay={0} />
         </h2>
         <p className="text-sm text-[var(--text-dim)] italic mb-10 font-mono">
           things I&apos;ve built and shipped

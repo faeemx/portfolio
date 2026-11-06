@@ -63,7 +63,7 @@ export default function Campfire() {
           <a href="https://github.com/faeemaxp" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)] transition-colors underline decoration-dotted underline-offset-4">GitHub</a>
           <a href="#" className="hover:text-[var(--accent)] transition-colors underline decoration-dotted underline-offset-4">Freelancer / Upwork</a>
           <a href="https://letterboxd.com/faeem/" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)] transition-colors underline decoration-dotted underline-offset-4">Letterboxd</a>
-          <a href="mailto:your-email@example.com" className="hover:text-[var(--accent)] transition-colors underline decoration-dotted underline-offset-4">Email</a>
+          <a href="mailto:faeemansariao@gmail.com" className="hover:text-[var(--accent)] transition-colors underline decoration-dotted underline-offset-4">Email</a>
         </div>
         
         <p className="mt-24 text-xs text-[var(--text-dim)] uppercase tracking-[0.2em]">

@@ -14,12 +14,29 @@ const CLOUDS = [
   "  ~~~~~~~~~   "
 ];
 
-const STARS = [
-  "   *  .    *    .   ",
-  ".     *      *     .",
-  "   .      *      .  ",
-  " *      .     *    *"
+// ASCII Crescent Moon in Night Sky
+const ASCII_MOON = [
+  "     _.._    ",
+  "   .' .-'`   ",
+  "  /  /       ",
+  " |  |        ",
+  "  \\  \\       ",
+  "   '. '-._   ",
+  "     `'--'   ",
 ];
+
+const STAR_CHARS = ['·', '*', '•', '✦', '+', '°', '·', '★', '·'];
+
+interface StarConfig {
+  id: number;
+  char: string;
+  top: number;
+  left: number;
+  color: string;
+  opacity: number;
+  twinkleDuration: number;
+  twinkleDelay: number;
+}
 
 // Landscape elements (from main branch ASCII art)
 const MOUNTAINS = [
@@ -185,21 +202,36 @@ function generateSnowflakes(): SnowflakeConfig[] {
   return flakes;
 }
 
-// Pre-generate star configs with deterministic PRNG
-function generateStars() {
+// Pre-generate stationary star configs with deterministic PRNG (fixed coordinates, zero movement)
+function generateStars(): StarConfig[] {
   let seed = 101;
-  return Array.from({ length: 16 }, (_, i) => {
+  const stars: StarConfig[] = [];
+  for (let i = 0; i < 42; i++) {
     const r1 = pseudoRandom(seed++);
     const r2 = pseudoRandom(seed++);
-    return {
+    const r3 = pseudoRandom(seed++);
+    const r4 = pseudoRandom(seed++);
+
+    const left = Math.round((i * 2.38 + r1 * 4) % 98);
+    const top = Math.round((2 + (i * 1.1 + r2 * 7.5)) % 48);
+
+    // Keep the area around the moon clear (moon is at top ~4-18%, right ~15-30%)
+    if (top >= 2 && top <= 18 && left >= 70 && left <= 95) {
+      continue;
+    }
+
+    stars.push({
       id: i,
-      content: STARS[i % STARS.length],
-      left: Math.round((i * 6.2 + r1 * 5) % 95),
-      pulseDuration: Math.round((2.5 + r2 * 2.5) * 10) / 10,
-      pulseDelay: Math.round((i * 0.5) % 3 * 10) / 10,
+      char: STAR_CHARS[i % STAR_CHARS.length],
+      left,
+      top,
       color: STAR_COLORS[i % STAR_COLORS.length],
-    };
-  });
+      opacity: Math.round((0.3 + r3 * 0.4) * 100) / 100,
+      twinkleDuration: Math.round((3 + r4 * 3) * 10) / 10,
+      twinkleDelay: Math.round((i * 0.3) % 4 * 10) / 10,
+    });
+  }
+  return stars;
 }
 
 // Pre-generate cloud configs with deterministic PRNG
@@ -251,40 +283,31 @@ export default function LivingBackground() {
       {/* Subtle Cold Sky Vignette */}
       <div className="absolute inset-0 bg-radial from-transparent via-transparent to-[#040810]/40" />
 
-      {/* Stars in clear winter sky with gentle twinkling */}
-      <div className="absolute top-0 left-0 w-full h-1/2 flex flex-col justify-between opacity-55">
-        {stars.map((star) => (
-          <div
-            key={`star-${star.id}`}
-            className="whitespace-pre ascii-art"
-            style={{
-              marginLeft: `${star.left}%`,
-              animation: `twinkleWinter ${star.pulseDuration}s ease-in-out infinite`,
-              animationDelay: `${star.pulseDelay}s`,
-              color: star.color,
-            }}
-          >
-            {star.content}
-          </div>
-        ))}
+      {/* ASCII Crescent Moon (Stationary in Night Sky) */}
+      <div className="absolute top-6 right-8 sm:right-20 md:right-32 select-none pointer-events-none z-0">
+        <pre className="font-mono text-xs sm:text-sm leading-tight text-[#e2e8f0] opacity-80">
+          {ASCII_MOON.join('\n')}
+        </pre>
       </div>
 
-      {/* Shooting Stars across cold night sky */}
-      <div className="absolute top-0 left-0 w-full h-1/2 pointer-events-none">
-        {[0, 1, 2].map((i) => (
-          <div
-            key={`shooting-${i}`}
-            className="whitespace-pre ascii-art absolute font-bold"
+      {/* Stationary Stars across Night Sky (fixed coordinates, strictly stationary) */}
+      <div className="absolute top-0 left-0 w-full h-1/2 pointer-events-none z-0">
+        {stars.map((star) => (
+          <span
+            key={`star-${star.id}`}
+            className="absolute font-mono select-none"
             style={{
-              left: `${18 + i * 32}%`,
-              top: `${5 + i * 9}%`,
-              animation: `shootingStar ${12 + i * 5}s linear infinite`,
-              animationDelay: `${i * 3.8}s`,
-              color: '#cbd5e1',
+              top: `${star.top}%`,
+              left: `${star.left}%`,
+              color: star.color,
+              opacity: star.opacity,
+              animation: `starStationary ${star.twinkleDuration}s ease-in-out infinite`,
+              animationDelay: `${star.twinkleDelay}s`,
+              ['--star-base-op' as string]: star.opacity,
             }}
           >
-            ---*
-          </div>
+            {star.char}
+          </span>
         ))}
       </div>
 

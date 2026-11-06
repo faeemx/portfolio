@@ -25,7 +25,6 @@ export default function Now() {
               </span>
               <span className="text-[var(--accent)] flex items-center gap-1.5">
                 <span>updated: Nov 2026</span>
-                <span className="text-white/40">❄</span>
               </span>
             </div>
 
@@ -34,15 +33,15 @@ export default function Now() {
               <div className="space-y-3">
                 <p className="text-[var(--text-primary)]">
                   <span className="text-[var(--accent)] mr-2">›</span>
-                  Building a TUI file manager in Python
+                  Building a fast TUI file manager in Python (Textual)
                 </p>
                 <p className="text-[var(--text-primary)]">
                   <span className="text-[var(--cyan)] mr-2">›</span>
-                  Learning React + Next.js <span className="text-[var(--text-dim)]">(built this site)</span>
+                  Shipping full-stack apps with React, Next.js &amp; MongoDB Atlas
                 </p>
                 <p className="text-[var(--text-primary)]">
                   <span className="text-[var(--orange)] mr-2">›</span>
-                  Experimenting with MQTT for IoT mesh networking
+                  Experimenting with MQTT for ESP32 IoT mesh networking
                 </p>
                 <p className="text-[var(--text-primary)]">
                   <span className="text-[var(--purple)] mr-2">›</span>
@@ -50,13 +49,13 @@ export default function Now() {
                 </p>
                 <p className="text-[var(--text-primary)]">
                   <span className="text-[var(--pink)] mr-2">›</span>
-                  Watching films &amp; rating on Letterboxd
+                  Watching films &amp; logging ratings on Letterboxd
                 </p>
               </div>
 
               <div className="pt-2 border-t border-white/10 flex items-center gap-2 text-xs text-[var(--text-dim)]">
                 <span className="inline-block w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
-                <span>Status: focus mode active</span>
+                <span>Status: focus mode active [50/10 blocks]</span>
               </div>
             </div>
           </div>

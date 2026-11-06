@@ -99,9 +99,13 @@ body {
   100% { transform: translate(-450px, 140px); opacity: 0; }
 }
 
-@keyframes twinkleWinter {
-  0%, 100% { opacity: 0.3; transform: scale(0.95); }
-  50% { opacity: 0.95; transform: scale(1.1); }
+@keyframes starStationary {
+  0%, 100% {
+    opacity: var(--star-base-op, 0.35);
+  }
+  50% {
+    opacity: calc(var(--star-base-op, 0.35) * 1.5);
+  }
 }
 
 /* === Organic Winter Snowfall Keyframes === */
