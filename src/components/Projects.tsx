@@ -24,7 +24,7 @@ const PROJECTS: Project[] = [
   |  _   _  |
   | | | | | |
   |_________|`,
-    accentColor: '#38bdf8',
+    accentColor: 'var(--accent)',
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
     ],
@@ -40,7 +40,7 @@ const PROJECTS: Project[] = [
    | ))) |
     '───'
    /     \\`,
-    accentColor: '#22d3ee',
+    accentColor: 'var(--cyan)',
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
     ],
@@ -48,31 +48,33 @@ const PROJECTS: Project[] = [
   {
     file: 'weather-station.md',
     title: '🌡️ Weather Station',
-    tagline: 'Environmental monitor',
+    tagline: 'Multi-sensor environmental monitor',
     description:
-      'Reads temperature, humidity, and barometric pressure from physical sensors. Logs data to Supabase. Web dashboard shows historical trends and real-time readings.',
-    tech: ['ESP32', 'DHT11', 'BMP280', 'Supabase', 'Python'],
-    ascii: `   ╭──╮
-   │°C│
-   │  │
-   ╰──╯`,
-    accentColor: '#a5f3fc',
+      'Reads temperature, humidity, pressure from DHT11 and BMP280 sensors. Pushes data every 60s to a Next.js dashboard via Supabase. Real-time live chart.',
+    tech: ['ESP32', 'DHT11', 'BMP280', 'Next.js', 'Supabase'],
+    ascii: `    _  _
+   ( \`   )_
+  (____(___)
+    ' ' ' '
+   ' ' ' '`,
+    accentColor: 'var(--orange)',
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
     ],
   },
   {
     file: 'mediaradar.md',
-    title: '🌐 Mediaradar',
-    tagline: 'Web scraping + data pipeline',
+    title: '📡 Mediaradar',
+    tagline: 'Automated intelligence scraper',
     description:
-      'Automated media tracking and aggregation platform. Scrapes, processes, and serves structured data. Deployed on Railway with a MongoDB backend.',
-    tech: ['Python', 'Scrapy', 'FastAPI', 'MongoDB', 'Railway'],
-    ascii: `   ╭─────╮
-   │ ◉ ◉ │
-   │  ━  │
-   ╰─────╯`,
-    accentColor: '#818cf8',
+      'Scrapes media intelligence data, cleans with pandas, and dumps to PostgreSQL. Scheduled cron jobs running headless. Built for real production workloads.',
+    tech: ['Python', 'Scrapy', 'PostgreSQL', 'Docker', 'pandas'],
+    ascii: `    /|
+   / |___
+  /  |   )
+ /___|__/
+    /|`,
+    accentColor: 'var(--purple)',
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
     ],
@@ -82,23 +84,23 @@ const PROJECTS: Project[] = [
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div
-      className="frost-card rounded-xl overflow-hidden transition-all duration-300 group hover:shadow-[0_0_30px_rgba(56,189,248,0.18)]"
+      className="terminal-card rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 group shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
       style={{ '--hover-color': project.accentColor } as React.CSSProperties}
     >
-      {/* File tab */}
-      <div className="px-5 py-2.5 border-b border-cyan-500/15 text-xs text-[var(--text-dim)] font-mono flex items-center justify-between bg-black/20">
+      {/* File tab header */}
+      <div className="px-5 py-2.5 border-b border-white/10 text-xs text-[var(--text-dim)] font-mono flex items-center justify-between bg-black/30">
         <div className="flex items-center gap-2">
-          <span className="opacity-40 text-cyan-400">❄</span>
-          <span>{project.file}</span>
+          <span className="opacity-40">─</span>
+          <span className="group-hover:text-white transition-colors">{project.file}</span>
         </div>
-        <span className="text-[10px] text-cyan-400/60 font-mono">[code]</span>
+        <span className="text-[10px] text-white/30 font-mono">markdown</span>
       </div>
 
       <div className="p-5 sm:p-6">
         <div className="flex items-start gap-5">
           {/* ASCII Art */}
           <pre
-            className="ascii-art text-xs shrink-0 hidden sm:block opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+            className="ascii-art text-xs shrink-0 hidden sm:block opacity-40 group-hover:opacity-100 transition-opacity duration-300"
             style={{ color: project.accentColor }}
           >
             {project.ascii}
@@ -106,7 +108,9 @@ function ProjectCard({ project }: { project: Project }) {
 
           {/* Content */}
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-bold text-white mb-0.5">{project.title}</h3>
+            <h3 className="text-lg font-bold text-white mb-0.5 group-hover:text-[var(--accent)] transition-colors">
+              {project.title}
+            </h3>
             <p className="text-xs text-[var(--text-dim)] mb-3">{project.tagline}</p>
             <p className="text-sm text-[var(--text-primary)] leading-relaxed mb-4">
               {project.description}
@@ -117,8 +121,8 @@ function ProjectCard({ project }: { project: Project }) {
               {project.tech.map((t) => (
                 <span
                   key={t}
-                  className="px-2 py-0.5 text-[10px] font-mono rounded border bg-black/30"
-                  style={{ borderColor: `${project.accentColor}55`, color: project.accentColor }}
+                  className="px-2 py-0.5 text-[10px] font-mono rounded border transition-colors duration-200"
+                  style={{ borderColor: project.accentColor, color: project.accentColor }}
                 >
                   {t}
                 </span>
@@ -150,17 +154,16 @@ function ProjectCard({ project }: { project: Project }) {
 export default function Projects() {
   return (
     <section id="projects" className="min-h-screen flex flex-col justify-center relative pt-16">
-      <div className="absolute top-10 left-0 w-full text-center opacity-[0.04] pointer-events-none">
-        <span className="text-6xl sm:text-8xl md:text-9xl font-bold tracking-widest text-cyan-400">PROJECTS</span>
+      <div className="absolute top-10 left-0 w-full text-center opacity-[0.05] pointer-events-none">
+        <span className="text-6xl sm:text-8xl md:text-9xl font-bold tracking-widest text-[var(--accent)]">PROJECTS</span>
       </div>
 
       <div className="relative z-10">
-        <h2 className="text-3xl font-bold mb-4 text-cyan-400 flex items-center gap-2">
-          <span className="text-cyan-400/60 text-xl">❄</span>
+        <h2 className="text-3xl font-bold mb-4 text-[var(--accent)]">
           <AsciiText text="[03] ls ~/projects" delay={0} />
         </h2>
         <p className="text-sm text-[var(--text-dim)] italic mb-10 font-mono">
-          things I&apos;ve built and shipped in winter
+          things I&apos;ve built and shipped
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
