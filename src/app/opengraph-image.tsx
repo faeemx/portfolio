@@ -99,7 +99,7 @@ export default async function Image() {
                 margin: '0 0 32px 0',
               }}
             >
-              18-year-old developer building real-time TUIs, ESP32 hardware, and web experiments with live Discord presence.
+              18-year-old developer building real-time Python TUIs, ESP32 IoT hardware, and full-stack web systems with live Discord presence.
             </p>
 
             {/* Badges */}
@@ -189,7 +189,7 @@ export default async function Image() {
           }}
         >
           <span>interactive ascii world · live discord presence</span>
-          <span style={{ color: '#22c55e' }}>faeemx.github.io/portfolio ↗</span>
+          <span style={{ color: '#22c55e' }}>faeem.space ↗</span>
         </div>
       </div>
     ),

@@ -11,13 +11,13 @@ export default function Hero() {
         {/* Left: Bio, Headline, Status */}
         <div className="flex-1 max-w-xl space-y-7">
           {/* Minimal Terminal Tag */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 border border-white/10 text-xs font-mono text-[var(--accent)] backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/50 border border-white/10 text-xs font-mono text-[var(--accent)] backdrop-blur-md hero-entrance shadow-[0_2px_15px_rgba(0,0,0,0.4)]">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
             <AsciiText text="mando@dev:~$" delay={100} />
           </div>
 
           {/* Main Name & Title */}
-          <div>
+          <div className="hero-entrance-delay-1">
             <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white mb-2">
               <AsciiText text="Mando" delay={300} />
             </h1>
@@ -27,42 +27,43 @@ export default function Hero() {
           </div>
 
           {/* Clean concise bio */}
-          <p className="text-base sm:text-lg text-[var(--text-primary)] leading-relaxed">
+          <p className="text-base sm:text-lg text-[var(--text-primary)] leading-relaxed hero-entrance-delay-2">
             <AsciiText
-              text="I write Python, build with ESP32s, and craft minimal terminal applications. Focused on TUIs, IoT hardware, and building things that work."
+              text="I build fast Python terminal apps, wire up ESP32 hardware, and ship full-stack web tools. Focused on real-time TUIs, physical computing, and software that works without the bloat."
               delay={900}
             />
           </p>
 
-          {/* Single Simplified System Readout */}
-          <div className="bg-black/60 border border-white/10 rounded-xl p-5 font-mono text-xs backdrop-blur-md max-w-lg space-y-3">
+          {/* Terminal System Readout */}
+          <div className="terminal-card rounded-xl p-5 font-mono text-xs max-w-lg space-y-3 hero-entrance-delay-3 shadow-[0_4px_25px_rgba(0,0,0,0.5)]">
             <div className="flex items-center justify-between border-b border-white/10 pb-2.5 text-[var(--text-dim)]">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
                 <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-                <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-                <span className="ml-2 text-white/70">system.status</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent)]" />
+                <span className="ml-2 text-white/80">system.status</span>
               </div>
-              <span className="text-[var(--accent)]">ready [OK]</span>
+              <span className="text-[var(--accent)] flex items-center gap-1.5">
+                <span>ready [OK]</span>
+              </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[var(--text-dim)]">
               <p><span className="text-white">stack:</span> Python, Next.js, ESP32</p>
-              <p><span className="text-white">focus:</span> TUIs &amp; IoT sensors</p>
-              <p><span className="text-white">uptime:</span> 18 years</p>
-              <p><span className="text-white">status:</span> building full-time</p>
+              <p><span className="text-white">focus:</span> TUIs, IoT &amp; Data Pipelines</p>
+              <p className="sm:col-span-2"><span className="text-white">uptime:</span> 18 years</p>
             </div>
           </div>
 
           {/* Scroll hint */}
-          <div className="pt-2 flex items-center gap-2 text-xs font-mono text-[var(--text-dim)]">
+          <div className="pt-2 flex items-center gap-2 text-xs font-mono text-[var(--text-dim)] hero-entrance-delay-4">
             <span className="text-[var(--accent)] animate-bounce">↓</span>
             <span>scroll to explore</span>
           </div>
         </div>
 
         {/* Right side free space: Circular Discord PFP + Minimal Activity Below */}
-        <div className="w-full md:w-auto flex justify-center md:justify-end md:pr-8 shrink-0">
+        <div className="w-full md:w-auto flex justify-center md:justify-end md:pr-8 shrink-0 hero-entrance-delay-5">
           <DiscordHeroCard />
         </div>
 

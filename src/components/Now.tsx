@@ -7,7 +7,7 @@ const CURSOR = `
 export default function Now() {
   return (
     <section id="now" className="min-h-screen flex flex-col justify-center relative pt-16">
-      <div className="absolute top-10 right-0 w-full text-right opacity-[0.06] pointer-events-none">
+      <div className="absolute top-10 right-0 w-full text-right opacity-[0.05] pointer-events-none">
         <span className="text-6xl sm:text-8xl md:text-9xl font-bold tracking-widest text-[var(--accent)]">NOW</span>
       </div>
 
@@ -17,11 +17,15 @@ export default function Now() {
             <AsciiText text="[04] cat ~/.now" delay={0} />
           </h2>
 
-          <div className="bg-black/40 border border-[var(--text-dim)] rounded-lg backdrop-blur-sm overflow-hidden max-w-xl">
+          <div className="terminal-card rounded-xl overflow-hidden max-w-xl shadow-[0_4px_25px_rgba(0,0,0,0.5)]">
             {/* Tab bar */}
-            <div className="px-5 py-2.5 border-b border-[var(--text-dim)] text-xs text-[var(--text-dim)] font-mono flex items-center justify-between">
-              <span>~/.now</span>
-              <span className="text-[var(--accent)]">last updated: Nov 2026</span>
+            <div className="px-5 py-2.5 border-b border-white/10 text-xs text-[var(--text-dim)] font-mono flex items-center justify-between bg-black/30">
+              <span className="flex items-center gap-2">
+                <span className="opacity-40">─</span> ~/.now
+              </span>
+              <span className="text-[var(--accent)] flex items-center gap-1.5">
+                <span>updated: Nov 2026</span>
+              </span>
             </div>
 
             {/* Content */}
@@ -29,15 +33,15 @@ export default function Now() {
               <div className="space-y-3">
                 <p className="text-[var(--text-primary)]">
                   <span className="text-[var(--accent)] mr-2">›</span>
-                  Building a TUI file manager in Python
+                  Building a fast TUI file manager in Python (Textual)
                 </p>
                 <p className="text-[var(--text-primary)]">
                   <span className="text-[var(--cyan)] mr-2">›</span>
-                  Learning React + Next.js <span className="text-[var(--text-dim)]">(built this site)</span>
+                  Shipping full-stack apps with React, Next.js &amp; MongoDB Atlas
                 </p>
                 <p className="text-[var(--text-primary)]">
                   <span className="text-[var(--orange)] mr-2">›</span>
-                  Experimenting with MQTT for IoT mesh networking
+                  Experimenting with MQTT for ESP32 IoT mesh networking
                 </p>
                 <p className="text-[var(--text-primary)]">
                   <span className="text-[var(--purple)] mr-2">›</span>
@@ -45,22 +49,20 @@ export default function Now() {
                 </p>
                 <p className="text-[var(--text-primary)]">
                   <span className="text-[var(--pink)] mr-2">›</span>
-                  Watching films &amp; rating on Letterboxd
+                  Watching films &amp; logging ratings on Letterboxd
                 </p>
               </div>
 
-              <div className="border-t border-[var(--text-dim)] pt-4 mt-4">
-                <p className="text-[var(--text-dim)] text-xs">
-                  <span className="text-[var(--accent)]">status:</span>{' '}
-                  open to freelance Python &amp; IoT work
-                </p>
+              <div className="pt-2 border-t border-white/10 flex items-center gap-2 text-xs text-[var(--text-dim)]">
+                <span className="inline-block w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse" />
+                <span>Status: focus mode active [50/10 blocks]</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="hidden md:flex flex-1 justify-center text-[var(--accent)] animate-pulse">
-          <pre className="ascii-art text-6xl font-bold">
+        <div className="hidden md:flex flex-col items-center text-[var(--accent)]">
+          <pre className="ascii-art text-sm animate-pulse">
             {CURSOR}
           </pre>
         </div>

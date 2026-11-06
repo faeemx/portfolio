@@ -4,9 +4,13 @@
 
 :root {
   --bg-color: #0d0d0d;
-  --accent: #22c55e; /* Forest Green */
+  --accent: #22c55e; /* Terminal Green */
+  --accent-glow: rgba(34, 197, 94, 0.2);
   --text-primary: #e4e4e7;
-  --text-dim: #52525b;
+  --text-dim: #71717a;
+  --frost: #e2e8f0;
+  --frost-dim: #94a3b8;
+  --frost-glow: rgba(226, 232, 240, 0.12);
   --purple: #a855f7;
   --cyan: #06b6d4;
   --lime: #84cc16;
@@ -66,59 +70,280 @@ body {
   user-select: none;
 }
 
-@keyframes sway {
-  0% { transform: rotate(-3deg); }
+/* === Scenery & Wind Animations === */
+@keyframes swayWinter {
+  0% { transform: rotate(-2deg); }
+  50% { transform: rotate(1deg); }
   100% { transform: rotate(3deg); }
 }
+
 @keyframes swayAggressive {
   0% { transform: rotate(-10deg); }
   100% { transform: rotate(15deg); }
 }
+
 @keyframes moveRight {
   0% { transform: translateX(-100vw); }
   100% { transform: translateX(100vw); }
 }
+
 @keyframes ripple {
   0% { transform: translateY(0); }
-  100% { transform: translateY(4px); }
-}
-@keyframes rippleFast {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(8px); }
-}
-@keyframes shootingStar {
-  0% { transform: translate(0, 0); opacity: 1; }
-  5% { transform: translate(-500px, 150px); opacity: 0; }
-  100% { transform: translate(-500px, 150px); opacity: 0; }
-}
-@keyframes falling {
-  0% { transform: translate(0, -20px) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translate(-100px, 300px) rotate(360deg); opacity: 0; }
-}
-@keyframes fallingFast {
-  0% { transform: translate(0, -20px) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translate(400px, 300px) rotate(720deg); opacity: 0; }
-}
-@keyframes windRush {
-  0% { transform: translateX(-100vw); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateX(100vw); opacity: 0; }
+  100% { transform: translateY(3px); }
 }
 
-@keyframes thunder {
-  0% { opacity: 0; }
-  2% { opacity: 0.8; }
-  4% { opacity: 0; }
-  8% { opacity: 0; }
-  10% { opacity: 0.6; }
-  12% { opacity: 0; }
-  100% { opacity: 0; }
+@keyframes shootingStar {
+  0% { transform: translate(0, 0); opacity: 0; }
+  2% { opacity: 1; }
+  8% { transform: translate(-450px, 140px); opacity: 0; }
+  100% { transform: translate(-450px, 140px); opacity: 0; }
 }
-.animate-thunder {
-  animation: thunder 10s infinite;
+
+@keyframes starStationary {
+  0%, 100% {
+    opacity: var(--star-base-op, 0.35);
+  }
+  50% {
+    opacity: calc(var(--star-base-op, 0.35) * 1.5);
+  }
+}
+
+/* === Organic Winter Snowfall Keyframes === */
+
+/* Left-biased swaying snowfall (simulates vortex shedding & air drift) */
+@keyframes snowFallSwayLeft {
+  0% {
+    transform: translate3d(0, -30px, 0) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    transform: translate3d(12px, 8vh, 0) rotate(10deg);
+    opacity: var(--flake-op, 0.8);
+  }
+  28% {
+    transform: translate3d(-16px, 28vh, 0) rotate(-14deg);
+  }
+  52% {
+    transform: translate3d(20px, 52vh, 0) rotate(16deg);
+  }
+  75% {
+    transform: translate3d(-12px, 75vh, 0) rotate(-10deg);
+  }
+  92% {
+    opacity: var(--flake-op, 0.8);
+  }
+  100% {
+    transform: translate3d(calc(var(--snow-drift, 20px) + 15px), 105vh, 0) rotate(24deg);
+    opacity: 0;
+  }
+}
+
+/* Right-biased counter-swaying snowfall */
+@keyframes snowFallSwayRight {
+  0% {
+    transform: translate3d(0, -30px, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    transform: translate3d(-14px, 10vh, 0) rotate(-12deg);
+    opacity: var(--flake-op, 0.8);
+  }
+  32% {
+    transform: translate3d(18px, 32vh, 0) rotate(15deg);
+  }
+  56% {
+    transform: translate3d(-20px, 56vh, 0) rotate(-16deg);
+  }
+  78% {
+    transform: translate3d(14px, 78vh, 0) rotate(12deg);
+  }
+  92% {
+    opacity: var(--flake-op, 0.8);
+  }
+  100% {
+    transform: translate3d(calc(var(--snow-drift, -20px) - 15px), 105vh, 0) rotate(-26deg);
+    opacity: 0;
+  }
+}
+
+/* Foreground crystalline tumbling snowflake */
+@keyframes snowFallTumble {
+  0% {
+    transform: translate3d(0, -30px, 0) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: var(--flake-op, 0.9);
+  }
+  25% {
+    transform: translate3d(calc(var(--snow-drift, 15px) * 0.3), 25vh, 0) rotate(90deg);
+  }
+  50% {
+    transform: translate3d(calc(var(--snow-drift, 15px) * 0.65), 50vh, 0) rotate(180deg);
+  }
+  75% {
+    transform: translate3d(calc(var(--snow-drift, 15px) * 0.85), 75vh, 0) rotate(270deg);
+  }
+  92% {
+    opacity: var(--flake-op, 0.9);
+  }
+  100% {
+    transform: translate3d(var(--snow-drift, 25px), 105vh, 0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Background micro-crystal slow float */
+@keyframes snowFallMicro {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--flake-op, 0.4);
+  }
+  35% {
+    transform: translate3d(-8px, 35vh, 0);
+  }
+  65% {
+    transform: translate3d(10px, 65vh, 0);
+  }
+  90% {
+    opacity: var(--flake-op, 0.4);
+  }
+  100% {
+    transform: translate3d(var(--snow-drift, 5px), 105vh, 0);
+    opacity: 0;
+  }
+}
+
+/* Diagonal flurry sweep */
+@keyframes snowFlurry {
+  0% {
+    transform: translate3d(-40px, -20px, 0) rotate(-15deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--flake-op, 0.7);
+  }
+  50% {
+    transform: translate3d(calc(30px + var(--snow-drift, 25px) * 0.5), 50vh, 0) rotate(20deg);
+  }
+  88% {
+    opacity: var(--flake-op, 0.7);
+  }
+  100% {
+    transform: translate3d(calc(60px + var(--snow-drift, 25px)), 105vh, 0) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* === Subtle Frost Card & Sheen (Terminal Compatible) === */
+.terminal-card {
+  background: rgba(13, 13, 13, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.terminal-card:hover {
+  border-color: rgba(34, 197, 94, 0.4);
+  box-shadow: 0 4px 25px rgba(34, 197, 94, 0.1), 0 0 15px rgba(226, 232, 240, 0.05);
+}
+
+.terminal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  pointer-events: none;
+}
+
+/* Subtle frost badge */
+.frost-badge {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+/* === Skeleton Shimmer === */
+@keyframes shimmerSkeleton {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.09) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmerSkeleton 1.8s ease-in-out infinite;
+}
+
+/* === Smooth Entrance Animations === */
+@keyframes heroFadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-entrance {
+  animation: heroFadeSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-entrance-delay-1 {
+  animation: heroFadeSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hero-entrance-delay-2 {
+  animation: heroFadeSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.hero-entrance-delay-3 {
+  animation: heroFadeSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.hero-entrance-delay-4 {
+  animation: heroFadeSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.hero-entrance-delay-5 {
+  animation: heroFadeSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+/* Section entrance animation */
+.section-fade-in {
+  animation: heroFadeSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* === Smooth crossfade for presence data === */
+@keyframes fadeInSmooth {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+.fade-in-presence {
+  animation: fadeInSmooth 0.5s ease-out both;
 }
