@@ -7,14 +7,14 @@ import { DEFAULT_DISCORD_USER_ID } from '@/lib/discord-config';
 function DiscordSkeleton() {
   return (
     <div className="flex flex-col items-center gap-3 font-mono text-xs">
-      {/* Circular avatar skeleton */}
+      {/* Circular avatar skeleton with frosty shimmer */}
       <div className="relative block">
-        <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-white/5 border-2 border-white/10 skeleton-shimmer" />
+        <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-cyan-950/20 border-2 border-cyan-500/20 ring-2 ring-cyan-400/20 skeleton-shimmer" />
         {/* Status dot skeleton */}
-        <span className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-[3px] border-[#0d0d0d] bg-white/10 skeleton-shimmer" />
+        <span className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-[3px] border-[#080c14] bg-cyan-900/40 skeleton-shimmer" />
       </div>
       {/* Activity pill skeleton */}
-      <div className="w-32 h-6 rounded-full bg-white/5 border border-white/10 skeleton-shimmer" />
+      <div className="w-32 h-6 rounded-full bg-cyan-950/20 border border-cyan-500/20 skeleton-shimmer" />
     </div>
   );
 }
@@ -41,15 +41,15 @@ export default function DiscordHeroCard() {
     : 'https://cdn.discordapp.com/embed/avatars/0.png';
 
   const statusColor = {
-    online: '#22c55e',
+    online: '#38bdf8', // Frost ice cyan for online
     idle: '#eab308',
     dnd: '#ef4444',
-    offline: '#71717a',
+    offline: '#64748b',
   }[status];
 
   // Determine minimal activity string
   let activityText = 'Online';
-  let activityIcon = '●';
+  let activityIcon = '❄';
   let iconColor = statusColor;
 
   if (spotify) {
@@ -68,13 +68,13 @@ export default function DiscordHeroCard() {
     activityIcon = '💭';
     activityText = customStatus.state;
   } else {
-    activityIcon = '●';
+    activityIcon = '❄';
     activityText = isOnline ? 'Online on Discord' : 'Offline';
   }
 
   return (
     <div className="flex flex-col items-center gap-3 font-mono text-xs fade-in-presence">
-      {/* Circular Discord PFP with live status dot */}
+      {/* Circular Discord PFP with frosted ice halo ring */}
       <a
         href="https://discord.com/users/1409447267290714222"
         target="_blank"
@@ -85,11 +85,11 @@ export default function DiscordHeroCard() {
         <img
           src={avatarUrl}
           alt={user?.global_name || 'Mando'}
-          className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover bg-neutral-900 border-2 border-white/15 shadow-2xl group-hover:border-[var(--accent)] transition-all duration-300 group-hover:scale-105"
+          className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover bg-neutral-900 border-2 border-white/20 ring-2 ring-cyan-400/30 shadow-[0_0_25px_rgba(56,189,248,0.25)] group-hover:ring-cyan-300 group-hover:shadow-[0_0_35px_rgba(56,189,248,0.45)] transition-all duration-300 group-hover:scale-105"
         />
         {/* Status dot positioned on circle boundary */}
         <span
-          className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-[3px] border-[#0d0d0d] shadow-md flex items-center justify-center"
+          className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-[3px] border-[#080c14] shadow-md flex items-center justify-center"
           style={{ backgroundColor: statusColor }}
         >
           {isOnline && (
@@ -101,12 +101,12 @@ export default function DiscordHeroCard() {
         </span>
       </a>
 
-      {/* Minimal Activity Below PFP */}
-      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 border border-white/10 text-[11px] text-[var(--text-dim)] backdrop-blur-md max-w-[220px] sm:max-w-[260px] shadow-lg">
+      {/* Frosted Activity Below PFP */}
+      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#070e1b]/80 border border-cyan-500/25 text-[11px] text-[var(--text-dim)] backdrop-blur-md max-w-[220px] sm:max-w-[260px] shadow-[0_0_15px_rgba(56,189,248,0.1)]">
         <span style={{ color: iconColor }} className="shrink-0 text-xs">
           {activityIcon}
         </span>
-        <span className="truncate text-white/85" title={activityText}>
+        <span className="truncate text-white/90" title={activityText}>
           {activityText}
         </span>
       </div>

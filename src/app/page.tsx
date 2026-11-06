@@ -11,11 +11,11 @@ import Connect from '@/components/Connect';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen selection:bg-[var(--accent)] selection:bg-opacity-30 selection:text-white">
+    <main className="relative min-h-screen selection:bg-cyan-500/30 selection:text-cyan-100">
       {/* Top Fixed Header with Discord Status & Quick Nav */}
       <Header />
 
-      {/* Layer 0: Living background (weather system — untouched) */}
+      {/* Layer 0: Winter Living background (3-layer parallax snowfall, winter landscape, atmosphere) */}
       <LivingBackground />
 
       {/* Content layer */}

@@ -24,7 +24,7 @@ const PROJECTS: Project[] = [
   |  _   _  |
   | | | | | |
   |_________|`,
-    accentColor: 'var(--accent)',
+    accentColor: '#38bdf8',
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
     ],
@@ -40,7 +40,7 @@ const PROJECTS: Project[] = [
    | ))) |
     '───'
    /     \\`,
-    accentColor: 'var(--cyan)',
+    accentColor: '#22d3ee',
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
     ],
@@ -56,7 +56,7 @@ const PROJECTS: Project[] = [
    │°C│
    │  │
    ╰──╯`,
-    accentColor: 'var(--orange)',
+    accentColor: '#a5f3fc',
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
     ],
@@ -72,7 +72,7 @@ const PROJECTS: Project[] = [
    │ ◉ ◉ │
    │  ━  │
    ╰─────╯`,
-    accentColor: 'var(--purple)',
+    accentColor: '#818cf8',
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/faeemaxp' },
     ],
@@ -81,19 +81,24 @@ const PROJECTS: Project[] = [
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="border border-[var(--text-dim)] rounded-lg bg-black/40 backdrop-blur-sm overflow-hidden hover:border-current transition-colors duration-500 group"
+    <div
+      className="frost-card rounded-xl overflow-hidden transition-all duration-300 group hover:shadow-[0_0_30px_rgba(56,189,248,0.18)]"
       style={{ '--hover-color': project.accentColor } as React.CSSProperties}
     >
       {/* File tab */}
-      <div className="px-5 py-2.5 border-b border-[var(--text-dim)] text-xs text-[var(--text-dim)] font-mono flex items-center gap-2">
-        <span className="opacity-50">─</span> {project.file}
+      <div className="px-5 py-2.5 border-b border-cyan-500/15 text-xs text-[var(--text-dim)] font-mono flex items-center justify-between bg-black/20">
+        <div className="flex items-center gap-2">
+          <span className="opacity-40 text-cyan-400">❄</span>
+          <span>{project.file}</span>
+        </div>
+        <span className="text-[10px] text-cyan-400/60 font-mono">[code]</span>
       </div>
 
       <div className="p-5 sm:p-6">
         <div className="flex items-start gap-5">
           {/* ASCII Art */}
           <pre
-            className="ascii-art text-xs shrink-0 hidden sm:block opacity-40 group-hover:opacity-100 transition-opacity duration-500"
+            className="ascii-art text-xs shrink-0 hidden sm:block opacity-60 group-hover:opacity-100 transition-opacity duration-300"
             style={{ color: project.accentColor }}
           >
             {project.ascii}
@@ -112,8 +117,8 @@ function ProjectCard({ project }: { project: Project }) {
               {project.tech.map((t) => (
                 <span
                   key={t}
-                  className="px-2 py-0.5 text-[10px] font-mono rounded border"
-                  style={{ borderColor: project.accentColor, color: project.accentColor }}
+                  className="px-2 py-0.5 text-[10px] font-mono rounded border bg-black/30"
+                  style={{ borderColor: `${project.accentColor}55`, color: project.accentColor }}
                 >
                   {t}
                 </span>
@@ -128,7 +133,7 @@ function ProjectCard({ project }: { project: Project }) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-mono underline decoration-dotted underline-offset-4 hover:text-[var(--accent)] transition-colors"
+                  className="text-xs font-mono underline decoration-dotted underline-offset-4 hover:text-white transition-colors"
                   style={{ color: project.accentColor }}
                 >
                   {link.label}
@@ -145,16 +150,17 @@ function ProjectCard({ project }: { project: Project }) {
 export default function Projects() {
   return (
     <section id="projects" className="min-h-screen flex flex-col justify-center relative pt-16">
-      <div className="absolute top-10 left-0 w-full text-center opacity-[0.06] pointer-events-none">
-        <span className="text-6xl sm:text-8xl md:text-9xl font-bold tracking-widest text-[var(--accent)]">PROJECTS</span>
+      <div className="absolute top-10 left-0 w-full text-center opacity-[0.04] pointer-events-none">
+        <span className="text-6xl sm:text-8xl md:text-9xl font-bold tracking-widest text-cyan-400">PROJECTS</span>
       </div>
 
       <div className="relative z-10">
-        <h2 className="text-3xl font-bold mb-4 text-[var(--accent)]">
+        <h2 className="text-3xl font-bold mb-4 text-cyan-400 flex items-center gap-2">
+          <span className="text-cyan-400/60 text-xl">❄</span>
           <AsciiText text="[03] ls ~/projects" delay={0} />
         </h2>
         <p className="text-sm text-[var(--text-dim)] italic mb-10 font-mono">
-          things I&apos;ve built and shipped
+          things I&apos;ve built and shipped in winter
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -29,10 +29,10 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
     : 'https://cdn.discordapp.com/embed/avatars/0.png';
 
   const statusColor = {
-    online: '#22c55e',
+    online: '#38bdf8', // Frost ice cyan
     idle: '#eab308',
     dnd: '#ef4444',
-    offline: '#71717a',
+    offline: '#64748b',
   }[status];
 
   const statusLabel = {
@@ -44,7 +44,7 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
 
   // Activity brief text
   let activityBrief = '';
-  let activityIcon = '●';
+  let activityIcon = '❄';
 
   if (spotify) {
     activityIcon = '♫';
@@ -61,7 +61,7 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
     activityIcon = '💭';
     activityBrief = customStatus.state;
   } else {
-    activityIcon = '●';
+    activityIcon = '❄';
     activityBrief = statusLabel;
   }
 
@@ -73,7 +73,7 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
         onClick={() => setShowDetails(!showDetails)}
         onMouseEnter={() => setShowDetails(true)}
         onMouseLeave={() => setShowDetails(false)}
-        className="flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-black/60 border border-[var(--text-dim)] hover:border-[var(--accent)] backdrop-blur-md transition-all duration-300 group cursor-pointer text-left"
+        className="flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[#070e1b]/80 border border-cyan-500/25 hover:border-cyan-400 backdrop-blur-md transition-all duration-300 group cursor-pointer text-left shadow-[0_0_15px_rgba(56,189,248,0.1)]"
         aria-label="Discord Status"
       >
         {/* Avatar with Status Dot */}
@@ -81,10 +81,10 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
           <img
             src={avatarUrl}
             alt={username}
-            className="w-full h-full rounded-full object-cover bg-neutral-900 border border-neutral-700"
+            className="w-full h-full rounded-full object-cover bg-neutral-900 border border-cyan-500/30"
           />
           <span
-            className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-[#0d0d0d]"
+            className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-[#070e1b]"
             style={{ backgroundColor: statusColor }}
           />
         </div>
@@ -92,10 +92,10 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
         {/* User & Live Activity text */}
         <div className="flex flex-col text-xs font-mono max-w-[140px] sm:max-w-[200px] md:max-w-[240px]">
           <div className="flex items-center gap-1.5 leading-none">
-            <span className="text-white font-semibold truncate group-hover:text-[var(--accent)] transition-colors">
+            <span className="text-white font-semibold truncate group-hover:text-cyan-300 transition-colors">
               {username}
             </span>
-            <span className="text-[10px] text-[var(--text-dim)] hidden sm:inline">
+            <span className="text-[10px] text-cyan-400/60 hidden sm:inline">
               [discord]
             </span>
           </div>
@@ -116,18 +116,18 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
         <div
           onMouseEnter={() => setShowDetails(true)}
           onMouseLeave={() => setShowDetails(false)}
-          className="absolute right-0 top-full mt-2 w-80 p-4 bg-[#121214]/95 border border-[var(--text-dim)] rounded-xl shadow-2xl backdrop-blur-xl z-50 text-xs font-mono animate-in fade-in slide-in-from-top-1 duration-200"
+          className="absolute right-0 top-full mt-2 w-80 p-4 bg-[#070e1b]/95 border border-cyan-500/30 rounded-xl shadow-[0_0_35px_rgba(56,189,248,0.2)] backdrop-blur-xl z-50 text-xs font-mono animate-in fade-in slide-in-from-top-1 duration-200"
         >
           {/* Header row */}
-          <div className="flex items-center gap-3 pb-3 border-b border-white/10">
+          <div className="flex items-center gap-3 pb-3 border-b border-cyan-500/15">
             <div className="relative w-12 h-12 shrink-0">
               <img
                 src={avatarUrl}
                 alt={username}
-                className="w-full h-full rounded-full object-cover bg-neutral-900 border border-neutral-700"
+                className="w-full h-full rounded-full object-cover bg-neutral-900 border border-cyan-500/30 ring-2 ring-cyan-400/20"
               />
               <span
-                className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full border-2 border-[#121214]"
+                className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full border-2 border-[#070e1b]"
                 style={{ backgroundColor: statusColor }}
               />
             </div>
@@ -144,7 +144,7 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
           </div>
 
           {/* Activity Section */}
-          <div className="py-3 space-y-2 border-b border-white/10">
+          <div className="py-3 space-y-2 border-b border-cyan-500/15">
             {spotify ? (
               <div className="p-2.5 rounded-lg bg-[#1db954]/10 border border-[#1db954]/20 space-y-1">
                 <div className="flex items-center gap-1.5 text-[#1db954] text-[11px] font-semibold">
@@ -155,8 +155,8 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
                 <p className="text-[var(--text-dim)] text-[11px] truncate">by {spotify.artist}</p>
               </div>
             ) : primaryActivity ? (
-              <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 space-y-1">
-                <p className="text-[10px] text-[var(--accent)] font-semibold uppercase tracking-wider">
+              <div className="p-2.5 rounded-lg bg-cyan-950/20 border border-cyan-500/20 space-y-1">
+                <p className="text-[10px] text-cyan-300 font-semibold uppercase tracking-wider">
                   ACTIVE NOW
                 </p>
                 <p className="text-white font-medium truncate">{primaryActivity.name}</p>
@@ -168,8 +168,8 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
                 )}
               </div>
             ) : customStatus?.state ? (
-              <div className="p-2 rounded-lg bg-white/5 border border-white/10">
-                <p className="text-[10px] text-[var(--text-dim)] uppercase">STATUS</p>
+              <div className="p-2 rounded-lg bg-cyan-950/20 border border-cyan-500/20">
+                <p className="text-[10px] text-cyan-400/80 uppercase">STATUS</p>
                 <p className="text-white mt-0.5">{customStatus.state}</p>
               </div>
             ) : (
@@ -186,7 +186,7 @@ export default function DiscordProfile({ userId = DEFAULT_DISCORD_USER_ID }: Dis
               href={`https://discord.com/users/${userId || '1409447267290714222'}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--accent)] hover:underline flex items-center gap-1"
+              className="text-cyan-400 hover:underline flex items-center gap-1"
             >
               Open Discord ↗
             </a>
