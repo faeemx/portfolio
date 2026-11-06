@@ -122,3 +122,95 @@ body {
 .animate-thunder {
   animation: thunder 10s infinite;
 }
+
+
+/* === Winter Snowfall Keyframes === */
+@keyframes snowFallDrift {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--snow-drift, 0px), 100vh, 0);
+    opacity: 0;
+  }
+}
+
+/* === Skeleton Shimmer === */
+@keyframes shimmerSkeleton {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmerSkeleton 1.8s ease-in-out infinite;
+}
+
+/* === Hero Section Entrance Animation === */
+@keyframes heroFadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-entrance {
+  animation: heroFadeSlideIn 0.7s ease-out both;
+}
+
+.hero-entrance-delay-1 {
+  animation: heroFadeSlideIn 0.7s ease-out 0.1s both;
+}
+
+.hero-entrance-delay-2 {
+  animation: heroFadeSlideIn 0.7s ease-out 0.2s both;
+}
+
+.hero-entrance-delay-3 {
+  animation: heroFadeSlideIn 0.7s ease-out 0.35s both;
+}
+
+.hero-entrance-delay-4 {
+  animation: heroFadeSlideIn 0.7s ease-out 0.5s both;
+}
+
+.hero-entrance-delay-5 {
+  animation: heroFadeSlideIn 0.7s ease-out 0.65s both;
+}
+
+/* === Smooth crossfade for presence data === */
+@keyframes fadeInSmooth {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+.fade-in-presence {
+  animation: fadeInSmooth 0.5s ease-out both;
+}

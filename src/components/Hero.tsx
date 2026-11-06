@@ -11,13 +11,13 @@ export default function Hero() {
         {/* Left: Bio, Headline, Status */}
         <div className="flex-1 max-w-xl space-y-7">
           {/* Minimal Terminal Tag */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 border border-white/10 text-xs font-mono text-[var(--accent)] backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 border border-white/10 text-xs font-mono text-[var(--accent)] backdrop-blur-md hero-entrance">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
             <AsciiText text="mando@dev:~$" delay={100} />
           </div>
 
           {/* Main Name & Title */}
-          <div>
+          <div className="hero-entrance-delay-1">
             <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white mb-2">
               <AsciiText text="Mando" delay={300} />
             </h1>
@@ -27,7 +27,7 @@ export default function Hero() {
           </div>
 
           {/* Clean concise bio */}
-          <p className="text-base sm:text-lg text-[var(--text-primary)] leading-relaxed">
+          <p className="text-base sm:text-lg text-[var(--text-primary)] leading-relaxed hero-entrance-delay-2">
             <AsciiText
               text="I write Python, build with ESP32s, and craft minimal terminal applications. Focused on TUIs, IoT hardware, and building things that work."
               delay={900}
@@ -35,7 +35,7 @@ export default function Hero() {
           </p>
 
           {/* Single Simplified System Readout */}
-          <div className="bg-black/60 border border-white/10 rounded-xl p-5 font-mono text-xs backdrop-blur-md max-w-lg space-y-3">
+          <div className="bg-black/60 border border-white/10 rounded-xl p-5 font-mono text-xs backdrop-blur-md max-w-lg space-y-3 hero-entrance-delay-3">
             <div className="flex items-center justify-between border-b border-white/10 pb-2.5 text-[var(--text-dim)]">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
@@ -55,14 +55,14 @@ export default function Hero() {
           </div>
 
           {/* Scroll hint */}
-          <div className="pt-2 flex items-center gap-2 text-xs font-mono text-[var(--text-dim)]">
+          <div className="pt-2 flex items-center gap-2 text-xs font-mono text-[var(--text-dim)] hero-entrance-delay-4">
             <span className="text-[var(--accent)] animate-bounce">↓</span>
             <span>scroll to explore</span>
           </div>
         </div>
 
         {/* Right side free space: Circular Discord PFP + Minimal Activity Below */}
-        <div className="w-full md:w-auto flex justify-center md:justify-end md:pr-8 shrink-0">
+        <div className="w-full md:w-auto flex justify-center md:justify-end md:pr-8 shrink-0 hero-entrance-delay-5">
           <DiscordHeroCard />
         </div>
 

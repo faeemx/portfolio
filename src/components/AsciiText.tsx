@@ -11,7 +11,7 @@ interface AsciiTextProps {
 }
 
 export default function AsciiText({ text, as: Component = 'span', className = '', delay = 0 }: AsciiTextProps) {
-  const [displayText, setDisplayText] = useState('');
+  const [displayText, setDisplayText] = useState(() => text);
   const [started, setStarted] = useState(false);
   const [isScrambling, setIsScrambling] = useState(false);
 
@@ -57,7 +57,7 @@ export default function AsciiText({ text, as: Component = 'span', className = ''
       className={`scramble-text transition-colors duration-75 ${className}`}
       style={{ color }}
     >
-      {displayText || text.replace(/./g, ' ')}
+      {started ? displayText : <span className="opacity-[0.08]">{text}</span>}
     </Component>
   );
 }
